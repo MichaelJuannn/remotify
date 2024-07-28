@@ -1,22 +1,32 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css'; // Pastikan untuk mengimpor file CSS global
+import { Poppins } from 'next/font/google';
+import Navbar from './navbar'; // Import Navbar
 
-const inter = Inter({ subsets: ["latin"] });
+
+// Import font Poppins
+const poppins = Poppins({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "PD-9",
-  description: "Riset dan Project",
+  title: 'Your Application Title',
+  description: 'Your application description',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={poppins.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
