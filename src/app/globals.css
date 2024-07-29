@@ -67,16 +67,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@media (min-width: 768px) {
-  .container {
-    padding-left: 148px;
-    padding-right: 148px;
-  }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-body {
-  font-family: 'Poppins', sans-serif;
-}
