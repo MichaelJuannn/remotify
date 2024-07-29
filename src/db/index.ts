@@ -1,6 +1,6 @@
 // lib/db.ts
 
-import { MongoClient, Db, Collection } from 'mongodb';
+import { MongoClient, Db, Collection } from "mongodb";
 
 let client: MongoClient | null = null;
 let db: Db | null = null;
@@ -15,13 +15,15 @@ export async function connectToDatabase() {
   const dbName = process.env.DB_NAME!;
 
   if (!uri || !dbName) {
-    throw new Error('Please define the MONGO_URI and DB_NAME environment variables inside .env.local');
+    throw new Error(
+      "Please define the MONGO_URI and DB_NAME environment variables inside .env.local",
+    );
   }
 
   client = new MongoClient(uri);
   await client.connect();
   db = client.db(dbName);
-  usersCollection = db.collection('users');
+  usersCollection = db.collection("users");
 
   return { client, db, usersCollection };
 }
