@@ -1,8 +1,9 @@
-import React from 'react';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import React from "react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
-const DiscussionCard = ({ user, time, title, content, tags }) => {
+//todo: give proper typing
+const DiscussionCard = ({ user, time, title, content, tags }: any) => {
   return (
     <div className="p-4 bg-white rounded-lg shadow mb-4">
       <div className="flex items-center mb-2">
@@ -18,7 +19,7 @@ const DiscussionCard = ({ user, time, title, content, tags }) => {
       <h2 className="text-lg font-bold text-gray-800 mb-2">{title}</h2>
       <p className="text-sm text-gray-600 mb-4">{content}</p>
       <div className="flex flex-wrap gap-2">
-        {tags.map((tag, index) => (
+        {tags.map((tag: any, index: any) => (
           <Badge key={index} className="text-xs bg-green-100 text-green-800">
             {tag}
           </Badge>
