@@ -1,17 +1,42 @@
 "use server";
 
 import { connectToDatabase } from "@/db";
+import { z } from "zod";
+import bcrypt from "bcrypt";
 
-export async function createUser(formdata: FormData) {
-  const newUser = {
+const schema = z.object({
+  name: z.string(),
+  email: z.string(),
+  password: z.string(),
+  role: z.string(),
+});
+
+export async function createUser(prevState: any, formdata: FormData) {
+  const saltRounds = 10;
+  const hashedPassword = await bcrypt.hash(
+    formdata.get("password") as string,
+    saltRounds,
+  );
+  const newUser = schema.safeParse({
     name: formdata.get("name"),
     email: formdata.get("email"),
-    password: formdata.get("password"),
-  };
+    password: hashedPassword,
+    role: "admin",
+  });
+  if (!newUser.success) {
+    return {
+      message: "gagal melakukan registrasi user",
+    };
+  }
   const { usersCollection } = await connectToDatabase();
   try {
-    await usersCollection.insertOne(newUser);
+    await usersCollection.insertOne(newUser.data);
+    return {
+      message: "berhasil melakukan pendaftaran",
+    };
   } catch (error) {
-    throw new Error("failed to create user");
+    return {
+      message: "gagal melakukan registrasi user",
+    };
   }
 }

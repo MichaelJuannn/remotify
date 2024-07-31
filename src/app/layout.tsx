@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css"; // Pastikan untuk mengimpor file CSS global
 import { Poppins } from "next/font/google";
 import Navbar from "./navbar"; // Import Navbar
+import { Toaster } from "@/components/ui/sonner";
 
 // Import font Poppins
 const poppins = Poppins({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Toaster richColors />
       </body>
     </html>
   );
