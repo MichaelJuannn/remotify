@@ -1,5 +1,5 @@
-import { connectToDatabase } from '@/db';
-import bcrypt from 'bcrypt';
+import { connectToDatabase } from "@/db";
+import bcrypt from "bcrypt";
 
 type UserData = {
   email: string;
@@ -7,23 +7,6 @@ type UserData = {
   password: string;
   name: string;
 };
-
-export async function createUser(userData: UserData) {
-  const { usersCollection } = await connectToDatabase();
-
-  const saltRounds = 10;
-  const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
-
-  const newUser = await usersCollection.insertOne({
-    email: userData.email,
-    username: userData.username,
-    password: hashedPassword,
-    name: userData.name,
-    role: "admin",
-  });
-
-  return newUser;
-}
 
 export async function checkPasswordMatch(
   credPassword: string,
