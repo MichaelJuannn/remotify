@@ -16,11 +16,11 @@ export async function checkPasswordMatch(
   return isPasswordMatch;
 }
 
-export async function getUser(username?: string) {
-  if (!username) throw "notfound";
+export async function getUser(email?: string) {
+  if (!email) throw "notfound";
   const { usersCollection } = await connectToDatabase();
 
-  const user = await usersCollection.findOne({ username });
+  const user = await usersCollection.findOne({ email: email });
   if (!user) throw "notfound";
 
   return user;
