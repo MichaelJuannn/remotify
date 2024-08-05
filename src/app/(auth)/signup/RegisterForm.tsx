@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { createUser } from "./action";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
+import { useEffect } from "react";
 
 const initialState = {
   message: "",
@@ -13,9 +14,11 @@ const initialState = {
 export default function RegisterForm() {
   const [state, formAction] = useFormState(createUser, initialState);
 
-  if (state.message) {
-    toast.success(state.message, { position: "bottom-left" });
-  }
+  useEffect(() => {
+    if (state.message) {
+      toast.success(state.message, { position: "bottom-left" });
+    }
+  }, [state]);
   return (
     <form action={formAction}>
       <div className="mb-4">
