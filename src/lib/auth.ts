@@ -1,12 +1,7 @@
-import { connectToDatabase } from "@/db";
+import { db } from "@/db";
+import { users } from "@/db/schema/schema";
 import bcrypt from "bcrypt";
-
-type UserData = {
-  email: string;
-  username: string;
-  password: string;
-  name: string;
-};
+import { eq } from "drizzle-orm";
 
 export async function checkPasswordMatch(
   credPassword: string,
@@ -18,10 +13,9 @@ export async function checkPasswordMatch(
 
 export async function getUser(email?: string) {
   if (!email) throw "notfound";
-  const { usersCollection } = await connectToDatabase();
 
-  const user = await usersCollection.findOne({ email: email });
-  if (!user) throw "notfound";
+  const user = await db.select().from(users).where(eq(users.email, email));
+  if (user.length === 0) throw "notfound";
 
-  return user;
+  return user[0];
 }

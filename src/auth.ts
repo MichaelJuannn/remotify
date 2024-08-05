@@ -26,7 +26,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!isPasswordMatch) {
           throw new Error("not found");
         }
-        return user as any;
+        return user;
       },
     }),
   ],
@@ -34,13 +34,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
-        token.id = user._id;
+        token.username = user.username;
       }
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
-      session.user.role = token.role;
+      if (session.user) {
+        session.user.role = token.role;
+        session.user.id = token.sub!;
+        session.user.username = token.username;
+      }
       return session;
     },
   },

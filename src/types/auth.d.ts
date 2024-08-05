@@ -1,22 +1,25 @@
 import { DefaultSession } from "next-auth";
 import { DefaultJWT } from "next-auth/jwt";
+import { users } from "@/db/schema/schema";
+
+type SelectUser = typeof users.$inferSelect;
 
 declare module "next-auth" {
   interface User {
     role: string;
-    _id: string;
+    username: string;
   }
   interface Session {
     user: {
       role: string;
-      id: string;
+      username: string;
     } & DefaultSession["user"];
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
-    id: string;
     role: string;
+    username: string;
   }
 }
