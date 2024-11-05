@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css"; // Pastikan untuk mengimpor file CSS global
 import { Poppins } from "next/font/google";
-import Navbar from "./navbar"; // Import Navbar
 import { Toaster } from "@/components/ui/sonner";
 
 // Import font Poppins
@@ -12,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Cendekiawan Aswaja",
-  description: "Deskripsi Cendekiawan Aswaja",
+  title: "Remotify",
+  description: "Remotify your jobs",
 };
 
 export default function RootLayout({
@@ -24,7 +23,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.className}>
       <body>
-        <Navbar />
         {children}
         <Toaster richColors />
       </body>
