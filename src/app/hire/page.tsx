@@ -1,14 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Navbar from "@/components/Navbar";
 import HireForm from "./HireForm";
+import Link from "next/link";
 
 export default function Page() {
   return (
     <div>
-      <nav className="flex justify-between p-4 border-b-gray-300 border-b">
-        <div className="text-xl font-bold">Remotify</div>
-        <div className="text-xl font-bold">Hire Remotely</div>
-        <div className="text-xl font-bold">News</div>
-      </nav>
+      <Navbar />
       <div className="my-10 mx-4">
         <HireForm />
       </div>

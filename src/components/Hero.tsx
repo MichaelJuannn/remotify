@@ -17,8 +17,8 @@ export default function Hero() {
             project.
           </p>
         </div>
-        <Button size="lg" className="mt-10">
-          Discover Remote Jobs
+        <Button size="lg" className="mt-10" asChild>
+          <Link href={"/jobs"}>Discover Remote Jobs</Link>
         </Button>
         <div className="mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row">
           <span className="mx-4 inline-flex items-center -space-x-4">

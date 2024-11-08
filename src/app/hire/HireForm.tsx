@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+import postJobOpening from "./action";
 
 const formSchema = z.object({
   companyName: z.string().min(2, "Mohon Masukkan Nama Perusahaan"),
@@ -49,7 +50,7 @@ export default function HireForm() {
   });
 
   function onSubmit(values: HireForm) {
-    console.log(values);
+    postJobOpening(values);
   }
 
   return (
