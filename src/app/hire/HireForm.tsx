@@ -25,6 +25,7 @@ const formSchema = z.object({
   employmentType: z.string().min(2, "Mohon Masukkan Tipe Kontrak"),
   primaryTag: z.string().min(2, "Mohon Masukkan Tag Utama"),
   description: z.string().min(2, "Mohon Masukkan Tag lainnya"),
+  careerPageLink: z.string().url("Mohon Masukkan url valid"),
   isSupport: z.boolean().default(false).optional(),
   isEmailNewsletter: z.boolean().default(false).optional(),
   isHighlight: z.boolean().default(false).optional(),
@@ -39,6 +40,7 @@ export default function HireForm() {
     defaultValues: {
       companyName: "",
       position: "",
+      careerPageLink: "",
       employmentType: "",
       primaryTag: "",
       description: "",
@@ -148,6 +150,28 @@ export default function HireForm() {
                     </FormControl>
                     <FormDescription>
                       Masukkan Tag Utama yang akan ditampilkan
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="careerPageLink"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold">
+                      Link Halaman Karir
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="https://career.thestartup.co.id/lowongan/back-end-developer-java/"
+                        className="bg-gray-100 focus:bg-white"
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Masukkan Link yang Menuju Halaman Lowongan Anda
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

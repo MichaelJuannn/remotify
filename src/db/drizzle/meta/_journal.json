@@ -15,6 +15,13 @@
       "when": 1731118908577,
       "tag": "0001_young_ben_grimm",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1731128554634,
+      "tag": "0002_romantic_william_stryker",
+      "breakpoints": true
     }
   ]
 }

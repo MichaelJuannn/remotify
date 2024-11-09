@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import { jobPosts } from "@/db/schema/schema";
 import { desc, like, or } from "drizzle-orm";
+import Link from "next/link";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -49,8 +50,12 @@ export default async function Page(props: { searchParams: SearchParams }) {
                   <p>{data.companyName}</p>
                 </div>
               </div>
-              <Button className="invisible group-hover:visible" size="lg">
-                Apply
+              <Button
+                className="invisible group-hover:visible"
+                size="lg"
+                asChild
+              >
+                <Link href={data.careerPageLink}>Apply</Link>
               </Button>
             </div>
           ))}

@@ -24,6 +24,7 @@ export const jobPosts = pgTable("job_post", {
   position: text("position").notNull(),
   employmentType: text("employment_type").notNull(),
   description: text("description").notNull(),
+  careerPageLink: text("career_page_link").notNull(),
   isSupported: boolean("is_supported").default(false),
   isHighlight: boolean("is_highlighted").default(false),
   isSticky: boolean("is_sticky").default(false),
