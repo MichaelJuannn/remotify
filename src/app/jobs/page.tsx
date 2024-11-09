@@ -1,5 +1,8 @@
 import Navbar from "@/components/Navbar";
 import SearchInput from "@/components/SearchInput";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import { jobPosts } from "@/db/schema/schema";
 import { desc, like, or } from "drizzle-orm";
@@ -14,7 +17,7 @@ export default async function Page(props: { searchParams: SearchParams }) {
     <div>
       <Navbar />
       <div>
-        <section className="py-32">
+        <section className="pt-32 pb-16">
           <div className="container text-center relative">
             <div className="mx-auto flex max-w-screen-lg flex-col">
               <p className="text-6xl text-balance">
@@ -26,6 +29,32 @@ export default async function Page(props: { searchParams: SearchParams }) {
             </div>
           </div>
         </section>
+        <div
+          id="job-grid"
+          className="container flex-col justify-center items-center space-y-4 min-h-screen"
+        >
+          {data.map((data) => (
+            <div
+              key={data.id}
+              className="container border border-black rounded-xl flex justify-between py-6 hover:opacity-75 group"
+            >
+              <div className="flex items-center gap-3">
+                <Avatar>
+                  <AvatarImage src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/258.png" />
+                  <AvatarFallback>X</AvatarFallback>
+                </Avatar>
+                <Separator orientation="vertical" />
+                <div>
+                  <p className="text-xl font-bold">{data.position}</p>
+                  <p>{data.companyName}</p>
+                </div>
+              </div>
+              <Button className="invisible group-hover:visible" size="lg">
+                Apply
+              </Button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -44,6 +73,7 @@ async function getJobs(query: string | undefined | string[]) {
     .where(
       or(
         like(jobPosts.companyName, `%${query}%`),
+        like(jobPosts.position, `%${query}%`),
         like(jobPosts.description, `%${query}%`),
       ),
     );

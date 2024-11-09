@@ -21,6 +21,7 @@ export const users = pgTable("user", {
 export const jobPosts = pgTable("job_post", {
   id: uuid("id").defaultRandom().primaryKey(),
   companyName: text("company_name").notNull(),
+  position: text("position").notNull(),
   employmentType: text("employment_type").notNull(),
   description: text("description").notNull(),
   isSupported: boolean("is_supported").default(false),

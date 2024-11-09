@@ -1,0 +1,1 @@
+ALTER TABLE "job_post" ADD COLUMN "position" text NOT NULL;
