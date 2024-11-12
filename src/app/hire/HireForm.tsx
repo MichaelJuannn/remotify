@@ -18,6 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import postJobOpening from "./action";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   companyName: z.string().min(2, "Mohon Masukkan Nama Perusahaan"),
@@ -52,7 +53,11 @@ export default function HireForm() {
   });
 
   function onSubmit(values: HireForm) {
-    postJobOpening(values);
+    toast.promise(() => postJobOpening(values), {
+      success: "Sukses Membuat Lowongan",
+      loading: "Loading...",
+      error: "Terjadi Error",
+    });
   }
 
   return (

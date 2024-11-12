@@ -17,7 +17,7 @@ export default function Hero() {
           </p>
         </div>
         <Button size="lg" className="mt-10" asChild>
-          <Link href={"/jobs"}>Discover Remote Jobs</Link>
+          <Link href={"/jobs"}>Jelajahi Remote Jobs</Link>
         </Button>
         <div className="mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row">
           <span className="mx-4 inline-flex items-center -space-x-4">
@@ -62,7 +62,7 @@ export default function Hero() {
               <span className="font-semibold">5.0</span>
             </div>
             <p className="text-left font-medium text-muted-foreground">
-              from 200+ reviews
+              200+ reviews
             </p>
           </div>
         </div>

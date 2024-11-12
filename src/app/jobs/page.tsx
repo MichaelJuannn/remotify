@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import { jobPosts } from "@/db/schema/schema";
+import { cn } from "@/lib/utils";
 import { desc, like, or } from "drizzle-orm";
 import Link from "next/link";
+import { formatDistanceToNow } from "date-fns";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -37,7 +39,10 @@ export default async function Page(props: { searchParams: SearchParams }) {
           {data.map((data) => (
             <div
               key={data.id}
-              className="container border border-black rounded-xl flex justify-between py-6 hover:opacity-75 group"
+              className={cn(
+                "container border border-black rounded-xl flex justify-between py-6 hover:opacity-75 group",
+                data.isHighlight && "bg-indigo-700 text-white",
+              )}
             >
               <div className="flex items-center gap-3">
                 <Avatar>
@@ -50,13 +55,24 @@ export default async function Page(props: { searchParams: SearchParams }) {
                   <p>{data.companyName}</p>
                 </div>
               </div>
-              <Button
-                className="invisible group-hover:visible"
-                size="lg"
-                asChild
-              >
-                <Link href={data.careerPageLink}>Apply</Link>
-              </Button>
+              <div className="flex items-center gap-2">
+                <div className="invisible group-hover:visible">
+                  {data.createdAt
+                    ? formatDistanceToNow(data.createdAt, { addSuffix: true })
+                    : "No date provided"}
+                </div>
+                <Button
+                  className={cn(
+                    "invisible group-hover:visible",
+                    data.isHighlight &&
+                      "bg-white text-violet-700 hover:bg-white/90",
+                  )}
+                  size="lg"
+                  asChild
+                >
+                  <Link href={data.careerPageLink}>Apply</Link>
+                </Button>
+              </div>
             </div>
           ))}
         </div>
