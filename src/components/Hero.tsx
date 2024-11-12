@@ -12,9 +12,8 @@ export default function Hero() {
         <div className="mx-auto flex max-w-screen-lg flex-col gap-6">
           <h1 className="text-3xl font-extrabold lg:text-6xl">Remotify</h1>
           <p className="text-balance text-muted-foreground lg:text-lg">
-            Finely crafted components built with React, Tailwind and Shadcn UI.
-            Developers can copy and paste these blocks directly into their
-            project.
+            Discover Your Perfect Remote Job Opportunity and Unlock the Freedom
+            to Work from Anywhere, Anytime!
           </p>
         </div>
         <Button size="lg" className="mt-10" asChild>
