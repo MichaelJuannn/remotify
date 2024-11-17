@@ -71,8 +71,11 @@ export default function Hero() {
         <Button asChild>
           <Link href={"/hire"}>Post Remote Jobs</Link>
         </Button>
-        <Button>Login</Button>
+        <Button asChild>
+          <Link href={"/signin"}>Login</Link>
+        </Button>
       </div>
+      {/* <Footer/> */}
     </section>
   );
 }

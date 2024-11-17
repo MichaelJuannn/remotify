@@ -10,10 +10,11 @@ const SignInPage = () => {
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
       <div className="flex-1 flex flex-col items-center justify-center p-8 bg-gray-100 lg:w-1/2">
         <h1 className={`text-4xl font-bold text-gray-800 mb-4 `}>
-          Cendekiawan Aswaja
+          Remotify
         </h1>
         <p className={`text-lg text-gray-700 mb-8 lg:text-center `}>
-          Menginspirasi Melalui Pengetahuan, Membangun Bersama Ajaran Aswaja
+          Discover Your Perfect Remote Job Opportunity and Unlock the Freedom
+          to Work from Anywhere, Anytime
         </p>
       </div>
       <div className="flex-1 flex items-center justify-center p-5">
@@ -48,19 +49,21 @@ const SignInPage = () => {
                 </Label>
                 <Input id="password" name="password" type="password" required />
               </div>
-
               <Button
                 type="submit"
-                className={`w-full bg-green-800 text-white py-2 rounded-lg hover:bg-green-900 transition duration-300 `}
+                className="w-full text-white py-2 rounded-lg transition duration-300"
               >
-                Masuk
+                <Link href="/" passHref>
+                  <span>Masuk</span>
+                </Link>
               </Button>
+
             </form>
             <p className={`text-gray-600 text-center mt-4 `}>
               Belum punya akun?{" "}
               <Link
                 href="/signup"
-                className={`text-green-800 hover:underline `}
+                className={`hover:underline `}
               >
                 Daftar
               </Link>

@@ -7,7 +7,9 @@ export default function Navbar() {
         Remotify
       </Link>
       <div className="text-xl font-bold">Hire Remotely</div>
-      <div className="text-xl font-bold">News</div>
+      <Link href={"/news"} className="text-xl font-bold">
+        News
+      </Link>
     </nav>
   );
 }
